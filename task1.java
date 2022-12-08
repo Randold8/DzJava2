@@ -7,7 +7,7 @@ public class task1 {
         Scanner scanner = new Scanner(System.in);
         Pattern datePattern = Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$");
 
-        System.out.print("Enter a date: ");
+        System.out.print("Введите дату: ");
         String userInput = scanner.nextLine();
 
         if (datePattern.matcher(userInput).matches()) {
@@ -17,35 +17,34 @@ public class task1 {
             int year = Integer.parseInt(dateParts[2]);
 
             if (isValidDate(day, month, year)) {
-                System.out.println("The string is a valid date in the format dd/mm/yyyy.");
+                System.out.println("Строка является валидной датой в формате dd/mm/yyyy.");
             } else {
-                System.out.println("The string is not a valid date in the format dd/mm/yyyy.");
+                System.out.println("Строка не является валидной датой в формате dd/mm/yyyy.");
             }
         } else {
-            System.out.println("The string is not a date in the format dd/mm/yyyy.");
+            System.out.println("Строка не является датой в формате dd/mm/yyyy.");
         }
     }
 
     private static boolean isValidDate(int day, int month, int year) {
-        // Check if year is a leap year
+        // Проверяем, является ли год високосным
         boolean isLeapYear = LocalDate.of(year, 1, 1).isLeapYear();
 
-        // Check if month has 31 days
+        // Проверяем, содержит ли месяц 31 день
         boolean has31Days = (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12);
+                // Проверяем, содержит ли месяц 30 дней
+                boolean has30Days = (month == 4 || month == 6 || month == 9 || month == 11);
 
-        // Check if month has 30 days
-        boolean has30Days = (month == 4 || month == 6 || month == 9 || month == 11);
-
-        // Check if month has 29 days in a leap year
-        boolean has29DaysInLeapYear = (month == 2 && isLeapYear);
-
-        // Check if month has 28 days in a non-leap year
-        boolean has28DaysInNonLeapYear = (month == 2 && !isLeapYear);
-
-        // Check if day is valid for the specified month
-        return (day >= 1 && day <= 31 && has31Days) ||
-               (day >= 1 && day <= 30 && has30Days) ||
-               (day >= 1 && day <= 29 && has29DaysInLeapYear) ||
-               (day >= 1 && day <= 28 && has28DaysInNonLeapYear);
-    }
-}
+                // Проверяем, содержит ли месяц 29 дней в високосном году
+                boolean has29DaysInLeapYear = (month == 2 && isLeapYear);
+        
+                // Проверяем, содержит ли месяц 28 дней в невисокосном году
+                boolean has28DaysInNonLeapYear = (month == 2 && !isLeapYear);
+        
+                // Проверяем, является ли день допустимым для указанного месяца
+                return (day >= 1 && day <= 31 && has31Days) ||
+                       (day >= 1 && day <= 30 && has30Days) ||
+                       (day >= 1 && day <= 29 && has29DaysInLeapYear) ||
+                       (day >= 1 && day <= 28 && has28DaysInNonLeapYear);
+            }
+        }
