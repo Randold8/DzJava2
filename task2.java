@@ -8,7 +8,7 @@ String password;
 // Проверка надежности пароля
 do {
 System.out.println("Введите пароль: ");
-password = sc.nextLine();
+password = scanner.nextLine();
 
 if (password.length() < 8) {
 System.out.println("Пароль слишком короткий. Введите пароль, содержащий не менее 8 символов.");
