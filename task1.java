@@ -28,7 +28,7 @@ public class task1 {
 
     private static boolean isValidDate(int day, int month, int year) {
         // Проверяем, является ли год високосным
-        boolean isLeapYear = LocalDate.of(year, 1, 1).isLeapYear();
+        boolean isLeapYear = LocalDate.of(year, month, day).isLeapYear();
 
         // Проверяем, содержит ли месяц 31 день
         boolean has31Days = (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12);
