@@ -25,10 +25,9 @@ public class task1 {
             System.out.println("Строка не является датой в формате dd/mm/yyyy.");
         }
     }
-
     private static boolean isValidDate(int day, int month, int year) {
         // Проверяем, является ли год високосным
-        boolean isLeapYear = LocalDate.of(year, month, day).isLeapYear();
+        boolean isLeapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 
         // Проверяем, содержит ли месяц 31 день
         boolean has31Days = (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12);
@@ -48,5 +47,6 @@ public class task1 {
                        (day >= 1 && day <= 28 && has28DaysInNonLeapYear);
             }
         }
+
 
 
