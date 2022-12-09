@@ -17,7 +17,7 @@ System.out.println("Пароль может состоять только из �
 } else if (!Pattern.matches("^(.*[a-z])(.*[A-Z])(.*[0-9]).*$", password)) {
 System.out.println("Пароль должен содержать хотя бы одну маленькую букву, одну заглавную букву и одну цифру.");
 }
-} while (password.length() < 8 || !Pattern.matches("^[0-9a-zA-Z_]+$", password) || !Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$", password));
+} while (password.length() < 8 || !Pattern.matches("^[0-9a-zA-Z_]+$", password) || !Pattern.matches("^(.*[a-z])(.*[A-Z])(.*[0-9]).*$", password));
 
 System.out.println("Ваш пароль надежный.");
 }
